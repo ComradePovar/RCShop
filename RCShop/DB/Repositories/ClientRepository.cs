@@ -21,6 +21,23 @@ namespace RCShop.DB.Repositories
         public void EnsureIndex(LiteCollection<Client> collection)
         {
             collection.EnsureIndex(x => x.ID);
+            collection.EnsureIndex(x => x.Name);
+            collection.EnsureIndex(x => x.Adress);
+            collection.EnsureIndex(x => x.Phone);
+            collection.EnsureIndex(x => x.Discount);
+        }
+
+        public IList<Client> Search(string query)
+        {
+            return GetAll()
+                .Where(x =>
+                    x.ID.ToString().Contains(query) ||
+                    x.Name.Contains(query) ||
+                    x.Adress.Contains(query) ||
+                    x.Phone.Contains(query) ||
+                    x.Discount.ToString().Contains(query))
+                .OrderBy(x => x.ID)
+                .ToList();
         }
 
         public void Add(Client item)
@@ -60,6 +77,14 @@ namespace RCShop.DB.Repositories
                 clients.AddRange(db.GetCollection<Client>("Clients").FindAll());
             }
             return clients;
+        }
+
+        public Client Get(int id)
+        {
+            using (var db = new LiteDatabase(dbPath))
+            {
+                return db.GetCollection<Client>("Clients").FindById(id);
+            }
         }
     }
 }

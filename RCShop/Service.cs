@@ -19,14 +19,14 @@ namespace RCShop
         public IRepository<Client> ClientRepository { get; }
         public IRepository<Order> OrderRepository { get; }
         public IRepository<Product> ProductRepository { get; }
-        public IRepository<ServiceTicket> ServiceCenterOrderRepository { get; }
+        public IRepository<ServiceTicket> ServiceTicketRepository { get; }
 
         private Service()
         {
             ClientRepository = new ClientRepository(ConfigurationManager.AppSettings["dbPath"]);
             OrderRepository = new OrderRepository(ConfigurationManager.AppSettings["dbPath"]);
             ProductRepository = new ProductRepository(ConfigurationManager.AppSettings["dbPath"]);
-            ServiceCenterOrderRepository = new ServiceTicketRepository(ConfigurationManager.AppSettings["dbPath"]);
+            ServiceTicketRepository = new ServiceTicketRepository(ConfigurationManager.AppSettings["dbPath"]);
         }
 
         public static Service GetInstance()

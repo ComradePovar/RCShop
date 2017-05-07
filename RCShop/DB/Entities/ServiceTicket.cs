@@ -12,6 +12,6 @@ namespace RCShop.DB.Entities
         public int ClientID { get; set; }
         public string Title { get; set; }
         public string Problem { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
     }
 }

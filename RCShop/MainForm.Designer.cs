@@ -48,10 +48,10 @@
             this.btnCancel2 = new System.Windows.Forms.Button();
             this.btnAddEdit2 = new System.Windows.Forms.Button();
             this.btnDelete2 = new System.Windows.Forms.Button();
-            this.lbOrderPrice = new System.Windows.Forms.Label();
+            this.lbOrderShippingPrice = new System.Windows.Forms.Label();
             this.lbClientID = new System.Windows.Forms.Label();
             this.lbProductID = new System.Windows.Forms.Label();
-            this.tbOrderPrice = new System.Windows.Forms.TextBox();
+            this.tbOrderShippingPrice = new System.Windows.Forms.TextBox();
             this.tbOrderClientID = new System.Windows.Forms.TextBox();
             this.tbOrderProductID = new System.Windows.Forms.TextBox();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
@@ -66,7 +66,6 @@
             this.lbPhone = new System.Windows.Forms.Label();
             this.lbDiscount = new System.Windows.Forms.Label();
             this.lbClientName = new System.Windows.Forms.Label();
-            this.tbClientPhone = new System.Windows.Forms.TextBox();
             this.tbClientDiscount = new System.Windows.Forms.TextBox();
             this.tbClientName = new System.Windows.Forms.TextBox();
             this.dgvClients = new System.Windows.Forms.DataGridView();
@@ -86,7 +85,8 @@
             this.tbTicketTitle = new System.Windows.Forms.TextBox();
             this.dgvServiceTickets = new System.Windows.Forms.DataGridView();
             this.tbSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.lbSearch = new System.Windows.Forms.Label();
+            this.mtbClientPhone = new System.Windows.Forms.MaskedTextBox();
             this.tc.SuspendLayout();
             this.tpGoods.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -129,7 +129,7 @@
             this.tc.SelectedIndex = 0;
             this.tc.Size = new System.Drawing.Size(868, 363);
             this.tc.TabIndex = 0;
-            this.tc.Selected += new System.Windows.Forms.TabControlEventHandler(this.tc_Selected);
+            this.tc.TabStop = false;
             // 
             // tpGoods
             // 
@@ -145,6 +145,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(3, 3);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -195,6 +196,7 @@
             this.btnAddEdit1.Size = new System.Drawing.Size(75, 23);
             this.btnAddEdit1.TabIndex = 3;
             this.btnAddEdit1.UseVisualStyleBackColor = true;
+            this.btnAddEdit1.Click += new System.EventHandler(this.btnAddEdit1_Click);
             // 
             // btnDelete1
             // 
@@ -204,6 +206,7 @@
             this.btnDelete1.TabIndex = 4;
             this.btnDelete1.Text = "Удалить";
             this.btnDelete1.UseVisualStyleBackColor = true;
+            this.btnDelete1.Click += new System.EventHandler(this.btnDelete1_Click);
             // 
             // lbPrice
             // 
@@ -238,6 +241,7 @@
             this.tbProductPrice.Name = "tbProductPrice";
             this.tbProductPrice.Size = new System.Drawing.Size(168, 20);
             this.tbProductPrice.TabIndex = 2;
+            this.tbProductPrice.TextChanged += new System.EventHandler(this.tbProductPrice_TextChanged);
             // 
             // tbProductCount
             // 
@@ -267,6 +271,7 @@
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(566, 331);
             this.dgvProducts.TabIndex = 0;
+            this.dgvProducts.TabStop = false;
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             // 
             // tpOrders
@@ -283,6 +288,7 @@
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(3, 3);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -302,10 +308,10 @@
             this.gbOrderInfo.Controls.Add(this.btnCancel2);
             this.gbOrderInfo.Controls.Add(this.btnAddEdit2);
             this.gbOrderInfo.Controls.Add(this.btnDelete2);
-            this.gbOrderInfo.Controls.Add(this.lbOrderPrice);
+            this.gbOrderInfo.Controls.Add(this.lbOrderShippingPrice);
             this.gbOrderInfo.Controls.Add(this.lbClientID);
             this.gbOrderInfo.Controls.Add(this.lbProductID);
-            this.gbOrderInfo.Controls.Add(this.tbOrderPrice);
+            this.gbOrderInfo.Controls.Add(this.tbOrderShippingPrice);
             this.gbOrderInfo.Controls.Add(this.tbOrderClientID);
             this.gbOrderInfo.Controls.Add(this.tbOrderProductID);
             this.gbOrderInfo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -333,6 +339,7 @@
             this.btnAddEdit2.Size = new System.Drawing.Size(75, 23);
             this.btnAddEdit2.TabIndex = 3;
             this.btnAddEdit2.UseVisualStyleBackColor = true;
+            this.btnAddEdit2.Click += new System.EventHandler(this.btnAddEdit2_Click);
             // 
             // btnDelete2
             // 
@@ -342,15 +349,16 @@
             this.btnDelete2.TabIndex = 4;
             this.btnDelete2.Text = "Удалить";
             this.btnDelete2.UseVisualStyleBackColor = true;
+            this.btnDelete2.Click += new System.EventHandler(this.btnDelete2_Click);
             // 
-            // lbOrderPrice
+            // lbOrderShippingPrice
             // 
-            this.lbOrderPrice.AutoSize = true;
-            this.lbOrderPrice.Location = new System.Drawing.Point(6, 205);
-            this.lbOrderPrice.Name = "lbOrderPrice";
-            this.lbOrderPrice.Size = new System.Drawing.Size(75, 13);
-            this.lbOrderPrice.TabIndex = 5;
-            this.lbOrderPrice.Text = "Цена заказа:";
+            this.lbOrderShippingPrice.AutoSize = true;
+            this.lbOrderShippingPrice.Location = new System.Drawing.Point(6, 205);
+            this.lbOrderShippingPrice.Name = "lbOrderShippingPrice";
+            this.lbOrderShippingPrice.Size = new System.Drawing.Size(86, 13);
+            this.lbOrderShippingPrice.TabIndex = 5;
+            this.lbOrderShippingPrice.Text = "Цена доставки:";
             // 
             // lbClientID
             // 
@@ -370,12 +378,13 @@
             this.lbProductID.TabIndex = 3;
             this.lbProductID.Text = "ID товара:";
             // 
-            // tbOrderPrice
+            // tbOrderShippingPrice
             // 
-            this.tbOrderPrice.Location = new System.Drawing.Point(110, 202);
-            this.tbOrderPrice.Name = "tbOrderPrice";
-            this.tbOrderPrice.Size = new System.Drawing.Size(168, 20);
-            this.tbOrderPrice.TabIndex = 2;
+            this.tbOrderShippingPrice.Location = new System.Drawing.Point(110, 202);
+            this.tbOrderShippingPrice.Name = "tbOrderShippingPrice";
+            this.tbOrderShippingPrice.Size = new System.Drawing.Size(168, 20);
+            this.tbOrderShippingPrice.TabIndex = 2;
+            this.tbOrderShippingPrice.TextChanged += new System.EventHandler(this.tbOrderShippingPrice_TextChanged);
             // 
             // tbOrderClientID
             // 
@@ -383,6 +392,7 @@
             this.tbOrderClientID.Name = "tbOrderClientID";
             this.tbOrderClientID.Size = new System.Drawing.Size(168, 20);
             this.tbOrderClientID.TabIndex = 1;
+            this.tbOrderClientID.TextChanged += new System.EventHandler(this.tbOrderClientID_TextChanged);
             // 
             // tbOrderProductID
             // 
@@ -390,6 +400,7 @@
             this.tbOrderProductID.Name = "tbOrderProductID";
             this.tbOrderProductID.Size = new System.Drawing.Size(168, 20);
             this.tbOrderProductID.TabIndex = 0;
+            this.tbOrderProductID.TextChanged += new System.EventHandler(this.tbOrderProductID_TextChanged);
             // 
             // dgvOrders
             // 
@@ -401,9 +412,11 @@
             this.dgvOrders.MultiSelect = false;
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.ReadOnly = true;
+            this.dgvOrders.RowHeadersVisible = false;
             this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrders.Size = new System.Drawing.Size(566, 331);
             this.dgvOrders.TabIndex = 0;
+            this.dgvOrders.TabStop = false;
             this.dgvOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellClick);
             // 
             // tpClients
@@ -420,6 +433,7 @@
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(3, 3);
             this.splitContainer3.Name = "splitContainer3";
             // 
@@ -436,6 +450,7 @@
             // 
             // gbClientInfo
             // 
+            this.gbClientInfo.Controls.Add(this.mtbClientPhone);
             this.gbClientInfo.Controls.Add(this.tbClientAdress);
             this.gbClientInfo.Controls.Add(this.lbAdress);
             this.gbClientInfo.Controls.Add(this.btnCancel3);
@@ -444,7 +459,6 @@
             this.gbClientInfo.Controls.Add(this.lbPhone);
             this.gbClientInfo.Controls.Add(this.lbDiscount);
             this.gbClientInfo.Controls.Add(this.lbClientName);
-            this.gbClientInfo.Controls.Add(this.tbClientPhone);
             this.gbClientInfo.Controls.Add(this.tbClientDiscount);
             this.gbClientInfo.Controls.Add(this.tbClientName);
             this.gbClientInfo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -460,12 +474,12 @@
             this.tbClientAdress.Location = new System.Drawing.Point(110, 80);
             this.tbClientAdress.Name = "tbClientAdress";
             this.tbClientAdress.Size = new System.Drawing.Size(168, 20);
-            this.tbClientAdress.TabIndex = 8;
+            this.tbClientAdress.TabIndex = 1;
             // 
             // lbAdress
             // 
             this.lbAdress.AutoSize = true;
-            this.lbAdress.Location = new System.Drawing.Point(9, 83);
+            this.lbAdress.Location = new System.Drawing.Point(6, 83);
             this.lbAdress.Name = "lbAdress";
             this.lbAdress.Size = new System.Drawing.Size(41, 13);
             this.lbAdress.TabIndex = 7;
@@ -486,8 +500,9 @@
             this.btnAddEdit3.Location = new System.Drawing.Point(203, 274);
             this.btnAddEdit3.Name = "btnAddEdit3";
             this.btnAddEdit3.Size = new System.Drawing.Size(75, 23);
-            this.btnAddEdit3.TabIndex = 3;
+            this.btnAddEdit3.TabIndex = 4;
             this.btnAddEdit3.UseVisualStyleBackColor = true;
+            this.btnAddEdit3.Click += new System.EventHandler(this.btnAddEdit3_Click);
             // 
             // btnDelete3
             // 
@@ -497,6 +512,7 @@
             this.btnDelete3.TabIndex = 4;
             this.btnDelete3.Text = "Удалить";
             this.btnDelete3.UseVisualStyleBackColor = true;
+            this.btnDelete3.Click += new System.EventHandler(this.btnDelete3_Click);
             // 
             // lbPhone
             // 
@@ -525,19 +541,13 @@
             this.lbClientName.TabIndex = 3;
             this.lbClientName.Text = "Имя клиента:";
             // 
-            // tbClientPhone
-            // 
-            this.tbClientPhone.Location = new System.Drawing.Point(110, 180);
-            this.tbClientPhone.Name = "tbClientPhone";
-            this.tbClientPhone.Size = new System.Drawing.Size(168, 20);
-            this.tbClientPhone.TabIndex = 2;
-            // 
             // tbClientDiscount
             // 
             this.tbClientDiscount.Location = new System.Drawing.Point(110, 130);
             this.tbClientDiscount.Name = "tbClientDiscount";
             this.tbClientDiscount.Size = new System.Drawing.Size(168, 20);
-            this.tbClientDiscount.TabIndex = 1;
+            this.tbClientDiscount.TabIndex = 2;
+            this.tbClientDiscount.TextChanged += new System.EventHandler(this.tbClientDiscount_TextChanged);
             // 
             // tbClientName
             // 
@@ -560,6 +570,7 @@
             this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClients.Size = new System.Drawing.Size(566, 331);
             this.dgvClients.TabIndex = 0;
+            this.dgvClients.TabStop = false;
             this.dgvClients.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellClick);
             // 
             // tpServiceTickets
@@ -576,6 +587,7 @@
             // splitContainer4
             // 
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.IsSplitterFixed = true;
             this.splitContainer4.Location = new System.Drawing.Point(3, 3);
             this.splitContainer4.Name = "splitContainer4";
             // 
@@ -616,7 +628,8 @@
             this.tbTicketClientID.Location = new System.Drawing.Point(122, 30);
             this.tbTicketClientID.Name = "tbTicketClientID";
             this.tbTicketClientID.Size = new System.Drawing.Size(155, 20);
-            this.tbTicketClientID.TabIndex = 8;
+            this.tbTicketClientID.TabIndex = 0;
+            this.tbTicketClientID.TextChanged += new System.EventHandler(this.tbTicketClientID_TextChanged);
             // 
             // lbTicketClientID
             // 
@@ -642,8 +655,9 @@
             this.btnAddEdit4.Location = new System.Drawing.Point(203, 274);
             this.btnAddEdit4.Name = "btnAddEdit4";
             this.btnAddEdit4.Size = new System.Drawing.Size(75, 23);
-            this.btnAddEdit4.TabIndex = 3;
+            this.btnAddEdit4.TabIndex = 4;
             this.btnAddEdit4.UseVisualStyleBackColor = true;
+            this.btnAddEdit4.Click += new System.EventHandler(this.btnAddEdit4_Click);
             // 
             // btnDelete4
             // 
@@ -653,6 +667,7 @@
             this.btnDelete4.TabIndex = 4;
             this.btnDelete4.Text = "Удалить";
             this.btnDelete4.UseVisualStyleBackColor = true;
+            this.btnDelete4.Click += new System.EventHandler(this.btnDelete4_Click);
             // 
             // lbTicketPrice
             // 
@@ -686,21 +701,22 @@
             this.tbTicketPrice.Location = new System.Drawing.Point(122, 180);
             this.tbTicketPrice.Name = "tbTicketPrice";
             this.tbTicketPrice.Size = new System.Drawing.Size(156, 20);
-            this.tbTicketPrice.TabIndex = 2;
+            this.tbTicketPrice.TabIndex = 3;
+            this.tbTicketPrice.TextChanged += new System.EventHandler(this.tbTicketPrice_TextChanged);
             // 
             // tbProblem
             // 
             this.tbProblem.Location = new System.Drawing.Point(122, 130);
             this.tbProblem.Name = "tbProblem";
             this.tbProblem.Size = new System.Drawing.Size(156, 20);
-            this.tbProblem.TabIndex = 1;
+            this.tbProblem.TabIndex = 2;
             // 
             // tbTicketTitle
             // 
             this.tbTicketTitle.Location = new System.Drawing.Point(122, 80);
             this.tbTicketTitle.Name = "tbTicketTitle";
             this.tbTicketTitle.Size = new System.Drawing.Size(156, 20);
-            this.tbTicketTitle.TabIndex = 0;
+            this.tbTicketTitle.TabIndex = 1;
             // 
             // dgvServiceTickets
             // 
@@ -712,33 +728,44 @@
             this.dgvServiceTickets.MultiSelect = false;
             this.dgvServiceTickets.Name = "dgvServiceTickets";
             this.dgvServiceTickets.ReadOnly = true;
+            this.dgvServiceTickets.RowHeadersVisible = false;
             this.dgvServiceTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvServiceTickets.Size = new System.Drawing.Size(566, 331);
             this.dgvServiceTickets.TabIndex = 0;
+            this.dgvServiceTickets.TabStop = false;
             this.dgvServiceTickets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServiceTickets_CellClick);
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(12, 369);
+            this.tbSearch.Location = new System.Drawing.Point(61, 372);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(148, 20);
+            this.tbSearch.Size = new System.Drawing.Size(230, 20);
             this.tbSearch.TabIndex = 1;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
-            // btnSearch
+            // lbSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(166, 366);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Поиск";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.lbSearch.AutoSize = true;
+            this.lbSearch.Location = new System.Drawing.Point(13, 375);
+            this.lbSearch.Name = "lbSearch";
+            this.lbSearch.Size = new System.Drawing.Size(42, 13);
+            this.lbSearch.TabIndex = 2;
+            this.lbSearch.Text = "Поиск:";
+            // 
+            // mtbClientPhone
+            // 
+            this.mtbClientPhone.Location = new System.Drawing.Point(110, 180);
+            this.mtbClientPhone.Mask = "(999)-000-00-00";
+            this.mtbClientPhone.Name = "mtbClientPhone";
+            this.mtbClientPhone.Size = new System.Drawing.Size(168, 20);
+            this.mtbClientPhone.TabIndex = 8;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(869, 398);
-            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.lbSearch);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.tc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -791,7 +818,6 @@
         private System.Windows.Forms.TabPage tpClients;
         private System.Windows.Forms.TabPage tpServiceTickets;
         private System.Windows.Forms.TextBox tbSearch;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnAddEdit1;
         private System.Windows.Forms.Button btnDelete1;
         private System.Windows.Forms.DataGridView dgvProducts;
@@ -809,10 +835,10 @@
         private System.Windows.Forms.Button btnCancel2;
         private System.Windows.Forms.Button btnAddEdit2;
         private System.Windows.Forms.Button btnDelete2;
-        private System.Windows.Forms.Label lbOrderPrice;
+        private System.Windows.Forms.Label lbOrderShippingPrice;
         private System.Windows.Forms.Label lbClientID;
         private System.Windows.Forms.Label lbProductID;
-        private System.Windows.Forms.TextBox tbOrderPrice;
+        private System.Windows.Forms.TextBox tbOrderShippingPrice;
         private System.Windows.Forms.TextBox tbOrderClientID;
         private System.Windows.Forms.TextBox tbOrderProductID;
         private System.Windows.Forms.DataGridView dgvOrders;
@@ -824,7 +850,6 @@
         private System.Windows.Forms.Label lbPhone;
         private System.Windows.Forms.Label lbDiscount;
         private System.Windows.Forms.Label lbClientName;
-        private System.Windows.Forms.TextBox tbClientPhone;
         private System.Windows.Forms.TextBox tbClientDiscount;
         private System.Windows.Forms.TextBox tbClientName;
         private System.Windows.Forms.DataGridView dgvClients;
@@ -844,6 +869,8 @@
         private System.Windows.Forms.DataGridView dgvServiceTickets;
         private System.Windows.Forms.TextBox tbTicketClientID;
         private System.Windows.Forms.Label lbTicketClientID;
+        private System.Windows.Forms.Label lbSearch;
+        private System.Windows.Forms.MaskedTextBox mtbClientPhone;
     }
 }
 

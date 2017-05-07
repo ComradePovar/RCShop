@@ -21,6 +21,9 @@ namespace RCShop.DB.Repositories
         public void EnsureIndex(LiteCollection<Product> collection)
         {
             collection.EnsureIndex(x => x.ID);
+            collection.EnsureIndex(x => x.Title);
+            collection.EnsureIndex(x => x.Count);
+            collection.EnsureIndex(x => x.Price);
         }
 
         public void Add(Product item)
@@ -60,6 +63,26 @@ namespace RCShop.DB.Repositories
                 products.AddRange(db.GetCollection<Product>("Products").FindAll());
             }
             return products;
+        }
+
+        public IList<Product> Search(string query)
+        {
+            return GetAll()
+                .Where(x =>
+                    x.ID.ToString().Contains(query) ||
+                    x.Title.Contains(query) ||
+                    x.Count.ToString().Contains(query) ||
+                    x.Price.ToString().Contains(query))
+                .OrderBy(x => x.ID)
+                .ToList();
+        }
+
+        public Product Get(int id)
+        {
+            using (var db = new LiteDatabase(dbPath))
+            {
+                return db.GetCollection<Product>("Products").FindById(id);
+            }
         }
     }
 }

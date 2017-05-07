@@ -8,10 +8,11 @@ namespace RCShop.DB.Entities
 {
     public class Client
     {
+        [LiteDB.BsonId]
         public int ID { get; set; }
         public string Name { get; set; }
         public string Adress { get; set; }
         public string Phone { get; set; }
-        public decimal Discount { get; set; }
+        public double Discount { get; set; }
     }
 }
