@@ -494,7 +494,7 @@ namespace RCShop
 
         private void tbProductPrice_TextChanged(object sender, EventArgs e)
         {
-            if (!moneyFormat.IsMatch(tbProductPrice.Text))
+            if (!moneyFormat.IsMatch(tbProductPrice.Text) && tbProductPrice.Text != "")
             {
                 btnAddEdit1.Enabled = false;
                 MessageBox.Show("Некорректное значение цены товара.");
@@ -508,7 +508,7 @@ namespace RCShop
 
         private void tbOrderProductID_TextChanged(object sender, EventArgs e)
         {
-            if (!idFormat.IsMatch(tbOrderProductID.Text))
+            if (!idFormat.IsMatch(tbOrderProductID.Text) && tbOrderProductID.Text != "")
             {
                 btnAddEdit2.Enabled = false;
             }
@@ -520,7 +520,7 @@ namespace RCShop
 
         private void tbOrderClientID_TextChanged(object sender, EventArgs e)
         {
-            if (!idFormat.IsMatch(tbOrderClientID.Text))
+            if (!idFormat.IsMatch(tbOrderClientID.Text) && tbOrderClientID.Text != "")
             {
                 btnAddEdit2.Enabled = false;
             }
@@ -532,7 +532,7 @@ namespace RCShop
 
         private void tbOrderShippingPrice_TextChanged(object sender, EventArgs e)
         {
-            if (!moneyFormat.IsMatch(tbOrderShippingPrice.Text))
+            if (!moneyFormat.IsMatch(tbOrderShippingPrice.Text) && tbOrderShippingPrice.Text != "")
             {
                 btnAddEdit2.Enabled = false;
             }
@@ -544,7 +544,7 @@ namespace RCShop
 
         private void tbClientDiscount_TextChanged(object sender, EventArgs e)
         {
-            if (!moneyFormat.IsMatch(tbClientDiscount.Text))
+            if (!moneyFormat.IsMatch(tbClientDiscount.Text) && tbClientDiscount.Text != "")
             {
                 btnAddEdit3.Enabled = false;
             }
@@ -556,7 +556,7 @@ namespace RCShop
 
         private void tbTicketClientID_TextChanged(object sender, EventArgs e)
         {
-            if (!idFormat.IsMatch(tbTicketClientID.Text))
+            if (!idFormat.IsMatch(tbTicketClientID.Text) && tbTicketClientID.Text != "")
             {
                 btnAddEdit4.Enabled = false;
             }
@@ -568,7 +568,7 @@ namespace RCShop
 
         private void tbTicketPrice_TextChanged(object sender, EventArgs e)
         {
-            if (!moneyFormat.IsMatch(tbTicketPrice.Text))
+            if (!moneyFormat.IsMatch(tbTicketPrice.Text) && tbTicketPrice.Text != "")
             {
                 btnAddEdit4.Enabled = false;
             }
